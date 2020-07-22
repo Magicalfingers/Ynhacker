@@ -1,0 +1,67 @@
+<header>
+    <div class="container-fluid" style="background-color: #f6f6ef;">
+        <div class="row no-gutters" style="background-color: #ff6600;color: white;">
+            <div class="col-sm-12 col-md-3 lap-display">
+                <div class="row">
+                    <div class="col-4">
+                        Comments
+                    </div>
+                    <div class="col-4">
+                        Vote Count
+                    </div>
+                    <div class="col-4">
+                        UpVote
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-9">
+                News Detail
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="container-fluid" style="background-color: #f6f6ef;">
+        <section>
+            <ng-container *ngFor="let news of newsList;">
+                <div class="row no-gutters news" *ngIf="!news.hidden">
+                    <div class="col-sm-12 col-md-9 order-md-2">
+                        <a href="{{news.url}}" class="news-title">{{news.title}}</a>
+                        <a href="{{news.siteUrl}}" class="news-site"> ({{news.siteUrl}})</a>
+                        by<span class="news-author"> {{news.author}}</span>
+                        <span> {{news.hoursLeft}} hours ago</span>
+                        <a href="javascript:void(0);" (click)="hideNews(news.objectId)">[hide]</a>
+                    </div>
+                    <div class="col-sm-12 col-md-3 order-md-1">
+                        <div class="row">
+                            <div class="col-4">
+                                <span class="mob-display">Comments</span>
+                                <span class="news-comments"> {{news.numComments}}</span>
+                            </div>
+                            <div class="col-4">
+                                <span class="mob-display">UpVote Count</span> {{news.upVoteCount}}
+                            </div>
+                            <div class="col-4">
+                                <span class="mob-display">Upvote</span>
+                                <a href="javascript:void(0);" (click)="increaseUpVote(news.objectId)"><i
+                                        class="fa fa-sort-asc" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </ng-container>
+        </section>
+        <section>
+            <div class="page-change-btns"> <a href="javascript:void(0);" [ngClass]="{'disabled': !checkValidPrevPage()}"
+                    (click)="goToPrevPage()" class="page-prev-btn">Previous</a> | <a href="javascript:void(0);"
+                    (click)="gotToNextPage()" [ngClass]="{'disabled': !checkValidNextPage()}" class="page-next-btn">
+                    Next</a></div>
+        </section>
+        <section>
+            <div class="row no-gutters">
+                <div #lineChart style="width: 100vw; height: 100vh;"></div>
+            </div>
+        </section>
+    </div>
+</main>
