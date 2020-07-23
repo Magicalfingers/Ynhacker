@@ -1,12 +1,27 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { DataService } from './data-service.service';
+import { HttpClient } from '@angular/common/http';
 
-import { DataServiceService } from './data-service.service';
+describe('DataService', () => {
+  let httpTestingController: HttpTestingController;
+  let service: DataService;
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [
+      HttpClientTestingModule
+    ],
+    providers: [
+        DataService
+    ]
+  }));
 
-describe('DataServiceService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(() => {
+    httpTestingController = TestBed.get(HttpTestingController);
+    service = TestBed.get(DataService);
+  });
 
   it('should be created', () => {
-    const service: DataServiceService = TestBed.get(DataServiceService);
+    const service: DataService = TestBed.get(DataService);
     expect(service).toBeTruthy();
   });
 });

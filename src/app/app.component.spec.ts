@@ -26,10 +26,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('Yhacker');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Yhacker app is running!');
-  });
 });

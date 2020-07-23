@@ -1,6 +1,6 @@
 <header>
-    <div class="container-fluid" style="background-color: #f6f6ef;">
-        <div class="row no-gutters" style="background-color: #ff6600;color: white;">
+    <div class="container-fluid">
+        <div class="row no-gutters">
             <div class="col-sm-12 col-md-3 lap-display">
                 <div class="row">
                     <div class="col-4">
@@ -21,7 +21,7 @@
     </div>
 </header>
 <main>
-    <div class="container-fluid" style="background-color: #f6f6ef;">
+    <div class="container-fluid">
         <section>
             <ng-container *ngFor="let news of newsList;">
                 <div class="row no-gutters news" *ngIf="!news.hidden">
@@ -39,12 +39,13 @@
                                 <span class="news-comments"> {{news.numComments}}</span>
                             </div>
                             <div class="col-4">
-                                <span class="mob-display">UpVote Count</span> {{news.upVoteCount}}
+                                <span class="upvote-count-label">UpVote Count</span> 
+                                <span class="upvote-count">{{news.upVoteCount}}</span>
                             </div>
                             <div class="col-4">
                                 <span class="mob-display">Upvote</span>
-                                <a href="javascript:void(0);" (click)="increaseUpVote(news.objectId)"><i
-                                        class="fa fa-sort-asc" aria-hidden="true"></i></a>
+                                <span class="up-vote"><a href="javascript:void(0);" (click)="increaseUpVote(news.objectId)"><i
+                                        class="fa fa-sort-asc" aria-hidden="true"></i></a></span>
                             </div>
                         </div>
                     </div>
