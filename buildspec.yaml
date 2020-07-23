@@ -17,8 +17,7 @@ phases:
       - ng build --prod --aot
   post_build:
      commands:
-      - aws s3 cp dist/Yhacker s3://${S3_BUCKET}
-      - aws s3 cp dist/Yhacker/assets s3://${S3_BUCKET}/assets
+      - aws s3 cp dist/Yhacker s3://${S3_BUCKET} --recursive
       - echo Build completed on `date`
 artifacts:
   files:
