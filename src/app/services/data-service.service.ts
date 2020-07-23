@@ -9,6 +9,6 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getNewsList(pageNo: number): Observable<any> {
-    return this.http.get<any>('http://hn.algolia.com/api/v1/search?page=' + pageNo);
+    return this.http.get<any>('https://hn.algolia.com/api/v1/search?page=' + pageNo);
   }
 }
