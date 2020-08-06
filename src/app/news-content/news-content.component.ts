@@ -36,8 +36,8 @@ export class NewsContentComponent implements OnInit, OnDestroy {
 
   getNewsListFromApi() {
     this.localStorageString = 'News data of Page = ' + this.pageNo;
-    localStorage.getItem(this.localStorageString) ?
-      this.setPageData(JSON.parse(localStorage.getItem(this.localStorageString))) :
+    window.localStorage.getItem(this.localStorageString) ?
+      this.setPageData(JSON.parse(window.localStorage.getItem(this.localStorageString))) :
       this.dataService.getNewsList(this.pageNo).pipe(takeUntil(this._onDestroy)).subscribe((data) => {
         this.setPageData(new NewsList(data));
         localStorage.setItem(this.localStorageString, JSON.stringify(this.pageDetails));
@@ -67,14 +67,14 @@ export class NewsContentComponent implements OnInit, OnDestroy {
 
   hideNews(objectID: string) {
     this.newsList[this.newsList.findIndex((news: NewsModel) => news.objectId === objectID)].hidden = true;
-    localStorage.setItem(this.localStorageString, JSON.stringify(this.pageDetails));
+    window.localStorage.setItem(this.localStorageString, JSON.stringify(this.pageDetails));
     this.constructGraphData();
     this.loadGrap();
   }
 
   increaseUpVote(objectID: string) {
     this.newsList[this.newsList.findIndex((news: NewsModel) => news.objectId === objectID)].upVoteCount++;
-    localStorage.setItem(this.localStorageString, JSON.stringify(this.pageDetails));
+    window.localStorage.setItem(this.localStorageString, JSON.stringify(this.pageDetails));
     this.loadGrap();
   }
 
