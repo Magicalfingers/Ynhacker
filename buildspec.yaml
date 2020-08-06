@@ -14,15 +14,15 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - npm run build:ssr
+      - ng build --prod --aot
   post_build:
      commands:
-      - aws s3 cp dist/browser s3://${S3_BUCKET} --recursive
+      - aws s3 cp dist/Yhacker s3://${S3_BUCKET} --recursive
       - echo Build completed on `date`
 artifacts:
   files:
       - '**/*'
-  base-directory: 'dist/browser*'
+  base-directory: 'dist/Yhacker*'
   discard-paths: yes
   
   
